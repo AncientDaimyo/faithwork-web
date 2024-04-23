@@ -1,0 +1,38 @@
+@media (max-width: 1600px) {
+	* {
+		--logo-width: 64px;
+		--menu-spacing: 110px;
+		--menu-probely: 22px;
+		--font-size: 20px;
+	}
+}
+
+@media (min-width: 1600px) {
+	* {
+		--logo-width: 3.3vw;
+		--menu-spacing: 5.7vw;
+		--menu-probely: 1.14vw;
+		--font-size: 1vw;
+	}
+}
+
+@media (max-width: 1000px) {
+	.desktop {
+		display: none;
+	}
+	* {
+		--logo-width: 20vw;
+		--menu-spacing: 5.7vw;
+		--menu-probely: 1.14vw;
+		--font-size: 1vw;
+	}
+}
+@media 	(min-width: 1000px) {
+	.mobile {
+		display: none;
+	}
+}
+
+.common-page {
+	min-height: calc(100vh - var(--logo-width) - 155px);
+}

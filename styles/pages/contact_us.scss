@@ -1,0 +1,37 @@
+.info-content-page {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100vw;
+    margin-top: var(--menu-probely);
+
+    .contact-us-heading {
+        margin-left: var(--menu-spacing);
+        width: calc(100vw / 2);
+
+        h1 {
+            font-size: 64px;
+            margin-top: var(--menu-probely);
+            padding-top: var(--menu-spacing);
+            margin-bottom: 0;
+            padding-bottom: 11px;
+        }
+
+        .contact-us-article {
+            font-family: "Human Sans", sans-serif;
+            font-weight: 400;
+
+            p {
+                font-size: 24px;
+                padding-top: 11px;
+            }
+        }
+    }
+
+    .contact-us-picture img {
+        padding-top: var(--menu-spacing);
+        padding-right: var(--menu-spacing);
+        padding-left: var(--menu-spacing);
+        height: auto;
+        width: calc(100vw / 2);
+    }
+}

@@ -1,0 +1,78 @@
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1400px;
+$breakpoint-xxl: 1940px;
+
+
+.shop-page {
+    width: 100vw;
+    display: grid;
+    margin-top: var(--logo-width);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: minmax(200px, 1fr);
+    gap: 5px 5px;
+
+    .product-card-full {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        a {
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .product-card-wrapper {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 90% 5% 5%;
+            place-items: center center;
+
+            .image-wrapper {
+                width: 100%;
+                height: 100%;
+
+                .product-card-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .product-card-name {
+                display: block;
+            }
+
+            .product-card-cost {
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-xs) {
+        grid-template-columns: 1fr;
+    }
+
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: $breakpoint-xl) and (max-width: $breakpoint-xxl) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: $breakpoint-xxl) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
