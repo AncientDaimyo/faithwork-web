@@ -1,38 +1,41 @@
 <template>
     <a v-bind:href="route + id"></a>
     <div class="product-card-wrapper" @mouseenter="showImage = true" @mouseleave="showImage = false">
-        
         <div class="image-wrapper">
-            <img class="product-card-image" v-bind:src="imageDir + image" v-bind:alt="name" />
+            <img class="product-card-image" :src="this.image">
         </div>
-        <div class="product-card-name">{{ name }}</div>
-        <div class="product-card-cost">{{ cost.split('.')[0] }}&#8381</div>
+        <div class="product-card-name">{{ this.name }}</div>
+        <div class="product-card-cost">{{ this.cost.split('.')[0] }}</div>
     </div>
 </template>
 
 <script setup>
-
 defineProps({
-    'id': String,
-    'name': String,
-    'article': String,
-    'image': String,
-    'cost': String,
-    'description': String,
+    'product': Object,
 });
-
 </script>
 
 <script>
-
 export default {
     data() {
         return {
-            route: "shop/",
-            imageDir: "/images/products/",
-        };
+            name: '',
+            cost: '',
+            image: ''
+
+        }
     },
-    methods: {
+    created() {
+        if (typeof product === "undefined") {
+            this.name = '';
+            this.cost = '';
+            this.image = '';
+        }
+        else {
+            this.name = this.product.name;
+            this.cost = this.product.cost;
+            this.image = this.product.image;
+        }
 
     }
 }

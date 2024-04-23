@@ -1,4 +1,5 @@
 <template>
+    <HeaderCommon/>
     <div class="info-content-page">
         <div class="contact-us-heading">
             <h1>Контакты</h1>
@@ -17,4 +18,17 @@
             <img src="../pic/FW_GIRL_FACE_black.png" />
         </div>
     </div>
+    <FooterSecond/>
 </template>
+
+<script>
+import HeaderCommon from '../../Shared/controllers/HeaderCommon.vue'
+import FooterSecond from '../../Shared/controllers/FooterSecond.vue'
+
+export default {
+    components: {
+        HeaderCommon,
+        FooterSecond,
+    }
+}
+</script>

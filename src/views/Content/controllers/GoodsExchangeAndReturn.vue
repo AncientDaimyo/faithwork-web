@@ -1,4 +1,5 @@
 <template>
+    <HeaderCommon/>
     <div class="info-content-page">
         <div class="goods-exchange-and-return-heading">
             <h1>Обмен и возврат</h1>
@@ -17,7 +18,8 @@
                 <p>
                     Вещи необходимо отправить на обратный адрес (адрес высылается по требованию клиента).<br>
                     Посылка должна быть отправлена без наложенного платежа.<br>
-                    Возврат денежных средств или обмен осуществляется после того, как посылка с возвратом вернулась на склад
+                    Возврат денежных средств или обмен осуществляется после того, как посылка с возвратом вернулась на
+                    склад
                     интернет магазина.<br>
                     <strong>Для возврат денежных средств, клиент обязан предоставить следующую информацию:</strong><br>
                     – Наименование банка<br>
@@ -34,4 +36,18 @@
         <div class="goods-exchange-and-return-picture">
             <img src="../pic/FW_GIRL_FACE_black.png" />
         </div>
-</div></template>
+    </div>
+    <FooterSecond/>
+</template>
+
+<script>
+import HeaderCommon from '../../Shared/controllers/HeaderCommon.vue'
+import FooterSecond from '../../Shared/controllers/FooterSecond.vue'
+
+export default {
+    components: {
+        HeaderCommon,
+        FooterSecond,
+    }
+}
+</script>
