@@ -43,7 +43,7 @@
 import { Navigation, Pagination, Autoplay, Parallax, A11y } from 'swiper/modules';
 
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from '/node_modules/swiper/vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles
 import 'swiper/css/bundle';

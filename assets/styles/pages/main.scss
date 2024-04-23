@@ -1,10 +1,9 @@
-#main_page {
-    section {
-        width: 100vw;
+.video_section {
+    width: 100vw;
+    height: auto;
+
+    #video_main_autoplay {
+        width: inherit;
         height: auto;
-        #video_main_autoplay {
-            width: inherit;
-            height: auto;
-        }
     }
 }
