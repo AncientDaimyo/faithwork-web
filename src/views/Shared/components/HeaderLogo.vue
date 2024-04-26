@@ -4,5 +4,3 @@
         <img id="logo2" class="faithwork-logo inactive" src="../pic/final_test-01.png" alt="FAITHWORK-LOGO2" />
     </a>
 </template>
-
-final_test_white-01.png

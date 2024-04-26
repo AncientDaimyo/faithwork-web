@@ -5,18 +5,21 @@
     height: var(--logo-width);
     max-width: calc(50vw - var(--logo-width) - var(--menu-spacing) - var(--menu-probely));
     z-index: 100;
+
     &.black {
         ul {
             li {
                 a {
                     color: black;
                 }
+
                 span {
                     color: black;
                 }
             }
         }
     }
+
     ul {
         height: inherit;
         width: inherit;
@@ -32,16 +35,19 @@
             flex-flow: row nowrap;
             justify-content: flex-start;
             align-items: center;
+
             a {
                 z-index: 100;
                 color: white;
                 text-decoration: none;
             }
+
             span {
                 &:hover {
                     cursor: pointer;
                     color: gray;
                 }
+
                 z-index: 100;
                 color: white;
             }
@@ -53,48 +59,36 @@
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
     width: 100vw;
+    height: 18vh;
     background-color: black;
-    z-index: 1;
-    height: 20vh;
-
-    &.white {
-        background-color: white;
-        .submenu-list {
-            li {
-                a {
-                    color: black;
-                }
-            }
-        }
-    }
 
     .submenu-list {
-        display: none;
+        position: absolute;
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: flex-start;
         padding-top: calc(3 * var(--menu-probely));
-        position: absolute;
         width: 100vw;
+        height: inherit;
         top: 0;
         left: 0;
-        height: inherit;
-        z-index: 100;
 
-        &.first {
-            width: 88px;
-            padding-left: var(--menu-spacing);
-        }
         &.second {
             padding-left: calc(var(--menu-spacing) + 88px);
         }
+
         li {
             margin-bottom: calc(var(--menu-probely) - 11px);
+
             a {
                 color: white;
                 text-decoration: none;
+
+                &:hover {
+                    cursor: pointer;
+                    color: gray;
+                }
             }
         }
     }

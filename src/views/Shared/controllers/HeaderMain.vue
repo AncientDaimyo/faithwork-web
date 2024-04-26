@@ -8,7 +8,6 @@
         </div>
         <HeaderLogo />
         <HeaderIcons />
-
     </header>
 </template>
 

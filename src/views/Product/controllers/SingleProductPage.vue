@@ -29,16 +29,7 @@
                     корзину</button>
             </div>
         </form>
-
-
-
-
-
-
-
-
     </div>
-
 </template>
 
 <script setup>
