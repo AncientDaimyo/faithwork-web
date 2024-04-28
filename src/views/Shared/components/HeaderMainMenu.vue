@@ -13,7 +13,7 @@
         </ul>
     </nav>
 
-    <div class="header-submenu" v-if="showDropdown" @mouseover="handleLinkMouseOver" @mouseleave="handleLinkMouseLeave">
+    <div class="header-submenu" v-show="showDropdown" @mouseover="handleLinkMouseOver" @mouseleave="handleLinkMouseLeave">
         <ul class="submenu-list second">
             <li>
                 <a href="/info/size_guide">

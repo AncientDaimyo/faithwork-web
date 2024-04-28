@@ -20,6 +20,6 @@ export default {
         SliderMain,
         MarqueeMain,
         FooterMain
-    }
+    },
 }
 </script>

@@ -23,8 +23,6 @@ export default {
         HeaderMainMenu,
         HeaderLogo,
         HeaderIcons,
-
-    }
+    },
 }
-
 </script>
