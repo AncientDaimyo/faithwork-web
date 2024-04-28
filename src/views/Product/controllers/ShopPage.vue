@@ -1,37 +1,35 @@
 <template>
-    <HeaderRide />
-    <div class="shop-page" v-bind:key="product in this.products">
-        <ProductCard :product="product" />
-    </div>
-    <FooterSecond />
+  <HeaderRide />
+  
+  <div class="shop-page" >
+    <ProductCard v-for="product in this.products" :key="product" :product="product" />
+  </div>
+  <FooterSecond />
 </template>
 
 <script>
-
-import HeaderRide from '../../Shared/controllers/HeaderRide.vue'
-import FooterSecond from '../../Shared/controllers/FooterSecond.vue'
-import ProductCard from './ProductCard.vue'
-
+import HeaderRide from "../../Shared/controllers/HeaderRide.vue";
+import FooterSecond from "../../Shared/controllers/FooterSecond.vue";
+import ProductCard from "./ProductCard.vue";
+import axios from "axios";
 
 export default {
-    components: {
-        HeaderRide,
-        FooterSecond,
-        ProductCard
-    },
-    data() {
-        return {
-            products: []
-        }
-    },
-    created() {
-        try {
-            const response = this.$axios.get(this.$apiUrl + '/api/product/get-products');
-            this.products = JSON.parse(response);
-        }
-        catch{
-            console.log("хуй");
-        } 
-    }
-}
+  components: {
+    HeaderRide,
+    FooterSecond,
+    ProductCard,
+  },
+  data() {
+    return {
+      products: {},
+    };
+  },
+  created() {
+    axios.get("https://127.0.0.1:8000/api/product/get-products")
+      .then((response) => {
+        // data is already parsed as JSON
+        this.products = response.data;
+      });
+  },
+};
 </script>

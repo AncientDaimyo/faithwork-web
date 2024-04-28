@@ -1,11 +1,13 @@
 <template>
-    <div class="product-card-wrapper" @mouseenter="showImage = true" @mouseleave="showImage = false">
-        <a v-bind:href="route + id"></a>
-        <div class="image-wrapper">
-            <img class="product-card-image" :src="this.image">
+    <div class="product-card-full">
+        <div class="product-card-wrapper" @mouseenter="showImage = true" @mouseleave="showImage = false">
+            <a v-bind:href="route + product.uuid"></a>
+            <div class="image-wrapper">
+                <img class="product-card-image" :src="product.image">
+            </div>
+            <div class="product-card-name">{{ product.name }}</div>
+            <div class="product-card-cost">{{ product.cost.split('.')[0] }}</div>
         </div>
-        <div class="product-card-name">{{ this.name }}</div>
-        <div class="product-card-cost">{{ this.cost.split('.')[0] }}</div>
     </div>
 </template>
 
@@ -21,8 +23,8 @@ export default {
         return {
             name: '',
             cost: '',
-            image: ''
-
+            image: '',
+            route: '/shop/'
         }
     },
     created() {
