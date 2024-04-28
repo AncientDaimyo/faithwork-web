@@ -50,6 +50,11 @@ const routes = [
     component: () => import('../views/Product/controllers/ShopPage.vue')
   },
   {
+    path: '/shop/:id',
+    name: 'singleProduct',
+    component: () => import('../views/Product/controllers/SingleProductPage.vue')
+  },
+  {
     path: '/account',
     name: 'account',
     component: () => import('../views/User/controllers/Account.vue')
