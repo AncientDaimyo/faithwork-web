@@ -1,104 +1,100 @@
 <template>
-    <div class="image-wrapper">
-        <img class="single-product-image" v-bind:src="imageDir + image" v-bind:alt="name" />
-        <img class="single-product-image" v-bind:src="imageDir + image" v-bind:alt="name" />
-        <img class="single-product-image" v-bind:src="imageDir + image" v-bind:alt="name" />
-    </div>
-    <div class="info">
-        {{ id }}
-        <p class="single-product-name">{{ name }}</p>
-        <p class="single-product-article">{{ article }}</p>
-        <div class="single-product-description-block">
-            <p class="single-product-description">Принт: {{ description_print }}</p>
-            <p class="single-product-description">Плотность: {{ description_density }}</p>
-            <p class="single-product-description">Состав: {{ description_compound }}</p>
+    <HeaderRide />
+    <div class="single-product-page-wrapper">
+        <div class="image-wrapper">
+            <img class="single-product-image" :src="product.image" :alt="name" v-for="(img, index) in 3" :key="index" />
         </div>
-
-        <form class="single-product-size-form" @submit.prevent="">
-            <div class="single-product-size-wrapper">
-                <div class="single-product-size-cycle" v-for="size in sizes" :key="size">
-                    <input :id=size type="radio" name="getProductSize" v-model="form.size" :value=size>
-                    <label :for=size>{{ size }}</label>
+        <div class="info">
+            <!-- <p class="single-product-id">{{ product.uuid }}</p> -->
+            <p class="single-product-name">{{ product.name }}</p>
+            <p class="single-product-article">{{ product.article }}</p>
+            <div class="single-product-description-block">
+                <p class="single-product-description">Принт: {{ product.description.print }}</p>
+                <p class="single-product-description">Плотность: {{ product.description.density }}</p>
+                <p class="single-product-description">Состав: {{ product.description.compound }}</p>
+            </div>
+            <form class="single-product-size-form" @submit.prevent="addToCart">
+                <div class="single-product-size-wrapper">
+                    <div class="single-product-size-cycle" v-for="size in product.sizes" :key="size" :size="size">
+                        <input :id="`size-${size}`" type="radio" name="getProductSize" v-model="sizeSelected"
+                            :value="size" />
+                        <label :for="`size-${size}`">{{ size }}</label>
+                    </div>
                 </div>
-            </div>
-            <div class="single-product-add-to-cart">
-                <button @click="addToCart" class="single-product-add-to-cart-button"
-                    v-show="showAddToCartButton">Добавить в
-                    корзину</button>
-                <button class="single-product-go-to-cart" v-show="showGoToCartButton" @click="goToCart">Перейти в
-                    корзину</button>
-            </div>
-        </form>
+                <div class="single-product-add-to-cart">
+                    <button class="single-product-add-to-cart-button" v-if="showAddToCartButton" @click="addToCart">
+                        Добавить в корзину
+                    </button>
+                    <button class="single-product-go-to-cart" v-if="showGoToCartButton" @click="goToCart">
+                        Перейти в корзину
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
+    <FooterSecond />
 </template>
 
-<script setup>
-defineProps({
-    'name': String,
-    'article': String,
-    'image': String,
-    'cost': String,
-    'description_print': String,
-    'description_density': String,
-    'description_compound': String,
-    'sizes': Array,
-});
-</script>
-
 <script>
+import HeaderRide from "../../Shared/controllers/HeaderRide.vue";
+import FooterSecond from "../../Shared/controllers/FooterSecond.vue";
+import axios from "axios";
+import { createStore } from '../../Product/controllers/cart';
 
 export default {
+    components: {
+        HeaderRide,
+        FooterSecond,
+    },
     data() {
         return {
-            id: this.$route.params.id,
-            products: [],
-            html: '',
+            product: {
+                sizes: [],
+                description: {},
+            },
+            sizeSelected: null,
             showAddToCartButton: true,
             showGoToCartButton: false,
-            route: "shop/",
-            imageDir: "/images/products/",
-            form: {
-                pid: this.id,
-                amount: 1,
-                size: null,
-            },
-            cartItems: []
         };
     },
+    created() {
+        axios.get("https://127.0.0.1:8000/api/product/get-product-by/" + this.$route.params.id)
+            .then((response) => {
+                // data is already parsed as JSON
+                this.product = response.data;
+            });
+    },
     methods: {
-        // addToCart() {
-        //     if (!this.form.size) {
-        //         alert('Пожалуйста, выберите размер товара');
-        //         return;
-        //     }
+        addToCart() {
+            this.showAddToCartButton = false;
+            this.showGoToCartButton = true;
 
-        //     let response = fetch('/cart/add', {
-        //         method: 'POST',
-        //         body: JSON.stringify(this.form)
-        //     })
-        
-        //         .then((response) => response.json())
-        //         .then((json) => {
-        //             console.log(json);
-        //             this.cartItems.push(this.form);
-        //             this.showAddToCartButton = false;
-        //             this.showGoToCartButton = true;
-        //         });
-        // },
-        // goToCart() {
-        //     location.href = "/cart";
-        // },
-        // async getProductSize() {
-        //     let href = '/shop/size-ajax/' + id;
-        //     let response = await fetch(href);
+        },
+        goToCart() {
+            this.$router.push({ path: '/cart' });
+        }
+    },
 
-        //     this.sizes = await response.json()
-        //     let html = '';
-        //     this.sizes.forEach(element => {
-        //         html += '<div class-"size-button">' + element + '</div>';
-        //     });
-        //     return html;
-        // },
+    setup() {
+        const cartStore = createStore();
+        const cartItems = cartStore.cartItems;
+        const addToCart = cartStore.addToCart;
+        const removeFromCart = cartStore.removeFromCart;
+
+        const addToCartHandler = (item) => {
+            addToCart(item);
+        };
+
+        const removeFromCartHandler = (item) => {
+            removeFromCart(item);
+        };
+
+        return {
+            cartItems,
+            addToCartHandler,
+            removeFromCartHandler
+        };
     }
-}
+
+};
 </script>

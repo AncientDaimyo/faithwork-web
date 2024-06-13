@@ -2,7 +2,7 @@
   <HeaderRide />
   
   <div class="shop-page" >
-    <ProductCard v-for="product in this.products" :key="product" :product="product" />
+    <ProductCard v-for="product in Products" :key="product" :product="product" />
   </div>
   <FooterSecond />
 </template>
@@ -11,7 +11,8 @@
 import HeaderRide from "../../Shared/controllers/HeaderRide.vue";
 import FooterSecond from "../../Shared/controllers/FooterSecond.vue";
 import ProductCard from "./ProductCard.vue";
-import axios from "axios";
+import { mapActions, mapGetters } from "vuex";
+// import axios from "axios";
 
 export default {
   components: {
@@ -25,11 +26,20 @@ export default {
     };
   },
   created() {
-    axios.get("https://127.0.0.1:8000/api/product/get-products")
-      .then((response) => {
-        // data is already parsed as JSON
-        this.products = response.data;
-      });
+    // axios.get("https://127.0.0.1:8000/api/product/get-products")
+    //   .then((response) => {
+    //     // data is already parsed as JSON
+    //     this.products = response.data;
+    //   });
   },
+  computed: {
+    ...mapGetters(["Products"])
+  },
+  methods: {
+    ...mapActions(["getProducts"])
+  },
+  mounted(){
+  this.getProducts();//dispatch the action
+},
 };
 </script>
