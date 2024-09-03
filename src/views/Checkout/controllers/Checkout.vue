@@ -1,5 +1,4 @@
 <template>
-
     <form class="custom-field-user-info" @submit.prevent="onSubmit">
 
         <label class="custom-field one">
@@ -87,7 +86,6 @@
     </form>
 
     {{ this.name }}
-
 </template>
 
 
@@ -160,15 +158,16 @@ export default {
             return undefined;
         }
         let matches = document.cookie.match(new RegExp(
-            "(?:^|; )" + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + "=([^;]*)"
+            // "(?:^|; )" + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + "=([^;]*)"
         ));
         if (matches) {
             let res = decodeURIComponent(matches[1]);
             if (json) {
                 try {
                     return JSON.parse(res);
+                } catch (e) {
+                    return res;
                 }
-                catch (e) { }
             }
             return res;
         }

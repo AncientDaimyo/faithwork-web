@@ -19,9 +19,10 @@
         .about-us-article {
             font-family: "Human Sans", sans-serif;
             font-weight: 400;
+            padding-bottom: var(--menu-spacing);
 
             p {
-                font-size: 24px;
+                font-size: 32px;
                 padding-top: 11px;
             }
         }
@@ -31,6 +32,7 @@
         padding-top: var(--menu-spacing);
         padding-right: var(--menu-spacing);
         padding-left: var(--menu-spacing);
+        padding-bottom: var(--menu-spacing);
         height: auto;
         width: calc(100vw / 2);
     }

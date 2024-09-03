@@ -5,7 +5,6 @@
             <img class="single-product-image" :src="product.image" :alt="name" v-for="(img, index) in 3" :key="index" />
         </div>
         <div class="info">
-            <!-- <p class="single-product-id">{{ product.uuid }}</p> -->
             <p class="single-product-name">{{ product.name }}</p>
             <p class="single-product-article">{{ product.article }}</p>
             <div class="single-product-description-block">
@@ -36,65 +35,48 @@
 </template>
 
 <script>
-import HeaderRide from "../../Shared/controllers/HeaderRide.vue";
-import FooterSecond from "../../Shared/controllers/FooterSecond.vue";
-import axios from "axios";
+import axios from 'axios';
 import { createStore } from '../../Product/controllers/cart';
+import { useRouter } from 'vue-router';
 
 export default {
-    components: {
-        HeaderRide,
-        FooterSecond,
-    },
-    data() {
-        return {
-            product: {
-                sizes: [],
-                description: {},
-            },
-            sizeSelected: null,
-            showAddToCartButton: true,
-            showGoToCartButton: false,
-        };
-    },
-    created() {
-        axios.get("https://127.0.0.1:8000/api/product/get-product-by/" + this.$route.params.id)
-            .then((response) => {
-                // data is already parsed as JSON
-                this.product = response.data;
-            });
-    },
-    methods: {
-        addToCart() {
-            this.showAddToCartButton = false;
-            this.showGoToCartButton = true;
+  setup() {
+    const cartStore = createStore();
+    const cartItems = cartStore.cartItems;
+    const addToCart = cartStore.addToCart;
+    const removeFromCart = cartStore.removeFromCart;
 
-        },
-        goToCart() {
-            this.$router.push({ path: '/cart' });
-        }
-    },
+    const router = useRouter();
 
-    setup() {
-        const cartStore = createStore();
-        const cartItems = cartStore.cartItems;
-        const addToCart = cartStore.addToCart;
-        const removeFromCart = cartStore.removeFromCart;
+    const addToCartHandler = (item) => {
+      addToCart(item);
+    };
 
-        const addToCartHandler = (item) => {
-            addToCart(item);
-        };
+    const removeFromCartHandler = (item) => {
+      removeFromCart(item);
+    };
 
-        const removeFromCartHandler = (item) => {
-            removeFromCart(item);
-        };
+    const goToCart = () => {
+      router.push({ path: '/cart' });
+    };
 
-        return {
-            cartItems,
-            addToCartHandler,
-            removeFromCartHandler
-        };
-    }
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`https://127.0.0.1:8000/api/product/get-product-by/${this.$route.params.id}`);
+        this.product = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
+    fetchProduct();
+
+    return {
+      cartItems,
+      addToCartHandler,
+      removeFromCartHandler,
+      goToCart,
+    };
+  },
 };
 </script>

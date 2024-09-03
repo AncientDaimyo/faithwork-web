@@ -9,7 +9,7 @@
             <p class="product-card-description">{{ description }}</p>
         </div>
         <div class="product-card-numbers-block">
-            <p class="product-card-cost">{{ cost.split('.')[0] }}</p>
+            <p class="product-card-cost">{{ cost }}</p>
             <p class="product-card-amount">{{ amount }}</p>
             <p class="">{{ size }} </p>
         </div>
@@ -18,8 +18,8 @@
         <button v-on:click="removeFromCart">Удалить товар</button>
     </div>
     <div>
-        <button v-on:click="removeCart">Удалить Всё нахуй</button>
-    </div>w
+        <button v-on:click="removeCart">Удалить ВСЁ</button>
+    </div>
 </template>
 
 <script setup>
