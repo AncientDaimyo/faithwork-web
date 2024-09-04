@@ -11,8 +11,7 @@
 import HeaderRide from "../../Shared/controllers/HeaderRide.vue";
 import FooterSecond from "../../Shared/controllers/FooterSecond.vue";
 import ProductCard from "./ProductCard.vue";
-import { mapActions, mapGetters } from "vuex";
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   components: {
@@ -26,20 +25,11 @@ export default {
     };
   },
   created() {
-    // axios.get("https://127.0.0.1:8000/api/product/get-products")
-    //   .then((response) => {
-    //     // data is already parsed as JSON
-    //     this.products = response.data;
-    //   });
-  },
-  computed: {
-    ...mapGetters(["Products"])
-  },
-  methods: {
-    ...mapActions(["getProducts"])
-  },
-  mounted(){
-  this.getProducts();//dispatch the action
-},
+    axios.get("https://127.0.0.1:8000/api/product/get-products")
+      .then((response) => {
+        // data is already parsed as JSON
+        this.products = response.data;
+      });
+  }
 };
 </script>

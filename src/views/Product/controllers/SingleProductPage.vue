@@ -39,7 +39,6 @@
 import HeaderRide from "../../Shared/controllers/HeaderRide.vue";
 import FooterSecond from "../../Shared/controllers/FooterSecond.vue";
 import axios from "axios";
-import { createStore } from '../../Product/controllers/cart';
 
 export default {
     components: {
@@ -64,37 +63,6 @@ export default {
                 this.product = response.data;
             });
     },
-    methods: {
-        addToCart() {
-            this.showAddToCartButton = false;
-            this.showGoToCartButton = true;
-
-        },
-        goToCart() {
-            this.$router.push({ path: '/cart' });
-        }
-    },
-
-    setup() {
-        const cartStore = createStore();
-        const cartItems = cartStore.cartItems;
-        const addToCart = cartStore.addToCart;
-        const removeFromCart = cartStore.removeFromCart;
-
-        const addToCartHandler = (item) => {
-            addToCart(item);
-        };
-
-        const removeFromCartHandler = (item) => {
-            removeFromCart(item);
-        };
-
-        return {
-            cartItems,
-            addToCartHandler,
-            removeFromCartHandler
-        };
-    }
 
 };
 </script>

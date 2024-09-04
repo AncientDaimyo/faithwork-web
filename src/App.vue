@@ -1,8 +1,8 @@
+<script setup>
+import router from "./router";
+import MainPage from "./views/Shared/controllers/MainPage.vue";
+</script>
 <template>
-    <!--
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    -->
   <router-view />
 </template>
 

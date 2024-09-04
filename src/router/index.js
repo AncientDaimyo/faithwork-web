@@ -1,73 +1,77 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import MainPage from '../views/Shared/controllers/MainPage.vue'
+import AboutUs from '../views/Content/controllers/AboutUs.vue'
+import ContactUs from '../views/Content/controllers/ContactUs.vue'
+import Delivery from '../views/Content/controllers/Delivery.vue'
+import GoodsExchangeAndReturn from '../views/Content/controllers/GoodsExchangeAndReturn.vue'
+import ProductCare from '../views/Content/controllers/ProductCare.vue'
+import SizeGuide from '../views/Content/controllers/SizeGuide.vue'
+import SingleProductPage from '../views/Product/controllers/SingleProductPage.vue'
+import ShopPage from '../views/Product/controllers/ShopPage.vue'
+// import Account from '../views/User/controllers/Account.vue'
+import Cart from '../views/Checkout/controllers/Cart.vue'
+
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../views/Shared/controllers/MainPage.vue')
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: MainPage
   },
   {
     path: '/info/about_us',
     name: 'aboutUs',
-    component: () => import('../views/Content/controllers/AboutUs.vue')
+    component: AboutUs
   },
   {
     path: '/info/contact_us',
     name: 'contactUs',
-    component: () => import('../views/Content/controllers/ContactUs.vue')
+    component: ContactUs
   },
   {
     path: '/info/delivery',
     name: 'delivery',
-    component: () => import('../views/Content/controllers/Delivery.vue')
+    component: Delivery
   },
   {
     path: '/info/goods_exchange_and_return',
     name: 'goodsExchangeAndReturn',
-    component: () => import('../views/Content/controllers/GoodsExchangeAndReturn.vue')
+    component: GoodsExchangeAndReturn
   },
   {
     path: '/info/product_care',
     name: 'productCare',
-    component: () => import('../views/Content/controllers/ProductCare.vue')
+    component: ProductCare
   },
   {
     path: '/info/size_guide',
     name: 'sizeGuide',
-    component: () => import('../views/Content/controllers/SizeGuide.vue')
+    component: SizeGuide
   },
   {
     path: '/shop',
     name: 'shop',
-    component: () => import('../views/Product/controllers/ShopPage.vue')
+    component: ShopPage
   },
   {
     path: '/shop/:id',
     name: 'singleProduct',
-    component: () => import('../views/Product/controllers/SingleProductPage.vue')
+    component: SingleProductPage
   },
-  {
-    path: '/account',
-    name: 'account',
-    component: () => import('../views/User/controllers/Account.vue')
-  },
+  // {
+  //   path: '/account',
+  //   name: 'account',
+  //   component: Account
+  // },
   {
     path: '/cart',
     name: 'cart',
-    component: () => import('../views/Checkout/controllers/Cart.vue')
+    component: Cart
   },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 

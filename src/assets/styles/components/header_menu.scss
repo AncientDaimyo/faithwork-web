@@ -47,9 +47,11 @@
                     cursor: pointer;
                     color: gray;
                 }
-
-                z-index: 100;
-                color: white;
+                
+                & {
+                    z-index: 100;
+                    color: white;
+                }
             }
         }
     }
