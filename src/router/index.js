@@ -9,7 +9,7 @@ import ProductCare from '../views/Content/controllers/ProductCare.vue'
 import SizeGuide from '../views/Content/controllers/SizeGuide.vue'
 import SingleProductPage from '../views/Product/controllers/SingleProductPage.vue'
 import ShopPage from '../views/Product/controllers/ShopPage.vue'
-// import Account from '../views/User/controllers/Account.vue'
+import Account from '../views/User/controllers/Account.vue'
 import Cart from '../views/Checkout/controllers/Cart.vue'
 
 const routes = [
@@ -58,11 +58,11 @@ const routes = [
     name: 'singleProduct',
     component: SingleProductPage
   },
-  // {
-  //   path: '/account',
-  //   name: 'account',
-  //   component: Account
-  // },
+  {
+    path: '/account',
+    name: 'account',
+    component: Account
+  },
   {
     path: '/cart',
     name: 'cart',
