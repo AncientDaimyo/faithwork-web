@@ -1,7 +1,7 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
-import HeaderCommon from '@/views/Shared/controllers/HeaderCommon.vue'
-import FooterSecond from '@/views/Shared/controllers/FooterSecond.vue'
+import HeaderCommon from '../../Shared/controllers/HeaderCommon.vue'
+import FooterSecond from '../../Shared/controllers/FooterSecond.vue'
 
 const getFullName = reactive({
     name: '',
