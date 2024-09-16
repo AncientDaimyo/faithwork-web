@@ -11,6 +11,9 @@ import SingleProductPage from '../views/Product/controllers/SingleProductPage.vu
 import ShopPage from '../views/Product/controllers/ShopPage.vue'
 import Account from '../views/User/controllers/Account.vue'
 import Cart from '../views/Checkout/controllers/Cart.vue'
+import Admin from '../views/Admin/controllers/Admin.vue'
+import ProductsPage from '../views/Admin/controllers/ProductsPage.vue'
+
 
 const routes = [
   {
@@ -68,6 +71,16 @@ const routes = [
     name: 'cart',
     component: Cart
   },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin
+  },
+  {
+    path: '/admin/products',
+    name: 'admin-products',
+    component: ProductsPage
+  }
 ]
 
 const router = createRouter({
