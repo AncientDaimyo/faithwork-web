@@ -2,7 +2,7 @@
   <HeaderRide />
   
   <div class="shop-page" >
-    <ProductCard v-for="product in Products" :key="product" :product="product" />
+    <ProductCard v-for="product in products" :key="product" :product="product" />
   </div>
   <FooterSecond />
 </template>

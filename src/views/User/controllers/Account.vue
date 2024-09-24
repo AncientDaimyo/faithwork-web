@@ -1,64 +1,154 @@
+<template>
+    <div class="account-page-wrapper">
+        <HeaderCommon />
+
+        <div class="account-content" v-if="isLoggedIn">
+            <h1></h1>
+            <div class="account-sections">
+                <div class="left-section">
+                    <ul>
+                        <li :class="{ active: currentTab === 'accountData' }" @click="changeTab('accountData')">ДАННЫЕ
+                            АККАУНТА</li>
+                        <li :class="{ active: currentTab === 'orderHistory' }" @click="changeTab('orderHistory')">
+                            ИСТОРИЯ ЗАКАЗОВ</li>
+                        <li :class="{ active: currentTab === 'addresses' }" @click="changeTab('addresses')">АДРЕСА</li>
+                    </ul>
+                </div>
+                <div class="right-section">
+                    <AccountData v-if="currentTab === 'accountData'" />
+                    <OrderHistory v-if="currentTab === 'orderHistory'" />
+                    <Addresses v-if="currentTab === 'addresses'" />
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <component :is="currentComponent" @login-success="handleLoginSuccess"
+                @register-success="handleRegisterSuccess" @show-register="showRegister" @show-login="showLogin" />
+        </div>
+
+        <FooterSecond />
+    </div>
+</template>
+
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-import HeaderCommon from '@/views/Shared/controllers/HeaderCommon.vue'
-import FooterSecond from '@/views/Shared/controllers/FooterSecond.vue'
+import { shallowRef, computed, ref } from 'vue';
+import { useUserStore } from '../../../stores/userStore.js';
+import Register from '../../User/controllers/Register.vue';
+import Login from '../../User/controllers/Login.vue';
+import HeaderCommon from '../../Shared/controllers/HeaderCommon.vue';
+import FooterSecond from '../../Shared/controllers/FooterSecond.vue';
+import AccountData from './AccountData.vue';
+import OrderHistory from './OrderHistory.vue';
+import Addresses from './Addresses.vue';
 
-const getFullName = reactive({
-    name: '',
-    secondName: '',
-    lastName: ''
-})
+const userStore = useUserStore();
 
-const isDataSaved = ref(false); // флаг, отслеживающий, были ли данные сохранены
-const savedFullName = ref(''); // сохраненное полное имя
+const isLoggedIn = computed(() => userStore.isLoggedIn);
+const userData = computed(() => userStore.userData);
 
-const saveUserData = async () => {
-    // Здесь можно отправить данные пользователя на сервер или выполнить другие действия по сохранению данных
+const currentComponent = shallowRef(Login);
 
-    // Пример сохранения данных в localStorage
-    localStorage.setItem('name', getFullName.name);
-    localStorage.setItem('secondName', getFullName.secondName);
-    localStorage.setItem('lastName', getFullName.lastName);
+const showRegister = () => {
+    currentComponent.value = Register;
+};
 
-    // Обновление отображаемых данных пользователя
-    savedFullName.value = `${getFullName.name} ${getFullName.lastName} ${getFullName.secondName}`;
-    isDataSaved.value = true;
+const showLogin = () => {
+    currentComponent.value = Login;
+};
 
-    alert("Данные успешно обновлены!");
-}
+const handleLoginSuccess = () => {
+    // После успешного входа, скрываем форму и показываем информацию об аккаунте
+    // Устанавливаем компонент в null, чтобы показать блок с аккаунтом
+    currentComponent.value = null;
+};
 
-onMounted(() => {
-    // При монтировании компонента можно загрузить сохраненные данные пользователя из localStorage
-    getFullName.name = localStorage.getItem('name') || '';
-    getFullName.secondName = localStorage.getItem('secondName') || '';
-    getFullName.lastName = localStorage.getItem('lastName') || '';
-})
+const handleRegisterSuccess = () => {
+    // После успешной регистрации, переходим на страницу входа
+    currentComponent.value = Login;
+};
+
+const currentTab = ref('accountData');
+
+const changeTab = (tab) => {
+    currentTab.value = tab;
+};
 </script>
 
-<template>
-    <HeaderCommon />
-    <div class="account-full-wrapper">
-        <div class="account-user-info">
-            <div class="user-full-name">
-                <p v-if="!isDataSaved">{{ getFullName.name + " " + getFullName.lastName + " " + getFullName.secondName
-                    }}</p>
-                <p v-else>{{ savedFullName }}</p>
-            </div>
-            <p class="user-email">spherefuturecow@gmail.com</p>
-        </div>
-        <div class="account-inputs-changes">
-            <form class="account-settings" @submit.prevent="saveUserData">
-                <h2>Личные данные</h2>
-                <input type="text" placeholder="Имя" v-model="getFullName.name">
-                <input type="text" placeholder="Отчество" v-model="getFullName.lastName">
-                <input type="text" placeholder="Фамилия" v-model="getFullName.secondName">
-                <button type="submit">Сохранить данные</button>
-            </form>
-            <form class="account-location">
-                <h2>Адрес</h2>
-                <input type="text" placeholder="Город">
-            </form>
-        </div>
-    </div>
-    <FooterSecond />
-</template>
+<style scoped>
+.account-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.account-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-sections {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.left-section {
+    width: 30%;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.left-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left-section ul li {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.left-section ul li:last-child {
+    border-bottom: none;
+}
+
+.left-section ul li.active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.right-section {
+    width: 70%;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.checkbox-group {
+    margin-bottom: 20px;
+}
+
+.save-button,
+.change-password-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.save-button:hover,
+.change-password-button:hover {
+    background-color: #0056b3;
+}
+</style>

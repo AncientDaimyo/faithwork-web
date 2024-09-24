@@ -9,8 +9,11 @@ import ProductCare from '../views/Content/controllers/ProductCare.vue'
 import SizeGuide from '../views/Content/controllers/SizeGuide.vue'
 import SingleProductPage from '../views/Product/controllers/SingleProductPage.vue'
 import ShopPage from '../views/Product/controllers/ShopPage.vue'
-// import Account from '../views/User/controllers/Account.vue'
+import Account from '../views/User/controllers/Account.vue'
+import Register from '../views/User/controllers/Register.vue';
+import Login from '../views/User/controllers/Login.vue';
 import Cart from '../views/Checkout/controllers/Cart.vue'
+import Gambling from '../views/User/controllers/Gambling.vue'
 
 const routes = [
   {
@@ -58,15 +61,30 @@ const routes = [
     name: 'singleProduct',
     component: SingleProductPage
   },
-  // {
-  //   path: '/account',
-  //   name: 'account',
-  //   component: Account
-  // },
+  {
+    path: '/account',
+    name: 'account',
+    component: Account
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
   {
     path: '/cart',
     name: 'cart',
     component: Cart
+  },
+  {
+    path: '/gambling',
+    name: 'gambling',
+    component: Gambling
   },
 ]
 
