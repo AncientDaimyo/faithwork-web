@@ -130,51 +130,63 @@
 
             .single-product-add-to-cart {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                height: 2.5rem;
+                height: 7rem; // увеличьте высоту блока, чтобы вместить две строки с кнопками
                 z-index: -1;
 
-                .single-product-add-to-cart-button {
+                .single-product-cart-buttons {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 50%;
+
+                    .single-product-add-to-cart-button,
+                    .single-product-go-to-cart {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 50%;
+                        height: 100%;
+                        border: none;
+                        border-radius: 0.5rem;
+                        background-color: black;
+                        color: white;
+                        font-size: 1rem;
+                        font-weight: 600;
+
+                        &:hover {
+                            cursor: pointer;
+                            background-color: #666; // серый цвет при наведении
+                            opacity: 0.75;
+                        }
+
+                        &:active {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+
+                .single-product-continue-shopping {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     width: 50%;
-                    height: 100%;
+                    height: 50%;
                     border: none;
                     border-radius: 0.5rem;
                     background-color: black;
                     color: white;
                     font-size: 1rem;
                     font-weight: 600;
+                    margin-top: 0.5rem;
 
                     &:hover {
                         cursor: pointer;
-                        opacity: 0.75;
-                    }
-
-                    &:active {
-                        opacity: 0.5;
-                    }
-                }
-
-
-                .single-product-go-to-cart {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 50%;
-                    height: 75%;
-                    border: none;
-                    border-radius: 10px 10px;
-                    background-color: black;
-                    color: white;
-                    font-size: medium;
-                    font-weight: 600;
-
-                    &:hover {
-                        cursor: pointer;
+                        background-color: #666; // серый цвет при наведении
                         opacity: 0.75;
                     }
 

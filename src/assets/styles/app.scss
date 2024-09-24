@@ -4,7 +4,7 @@
 		--menu-spacing: 110px;
 		--menu-probely: 22px;
 		--font-size: 20px;
-	}
+			}
 }
 
 @media (min-width: 1600px) {
@@ -12,7 +12,7 @@
 		--logo-width: 3.3vw;
 		--menu-spacing: 5.7vw;
 		--menu-probely: 1.14vw;
-		--font-size: 1vw;
+--font-size: 1vw;
 	}
 }
 
@@ -29,6 +29,7 @@
 @import "components/footer_icons";
 @import "components/header_menu";
 @import "components/breadcrumbs";
+@import "components/recommended_product_card";
 
 // layout
 @import "layout/template";
@@ -42,17 +43,18 @@
 // pages
 @import "pages/main";
 @import "pages/404";
-// @import "pages/account_old";
 @import "pages/shop";
 @import "pages/single_product_page";
-@import "pages/account_new";
 @import "pages/about_us";
 @import "pages/contact_us";
 @import "pages/delivery";
 @import "pages/goods_exchange_and_return";
 @import "pages/product_care";
 @import "pages/size_guide";
-@import "pages/cart_checkout";
+@import "pages/cart";
+@import "pages/login";
+@import "pages/register";
+@import "pages/account";
 
 // themes
 // utils
