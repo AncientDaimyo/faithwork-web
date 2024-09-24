@@ -13,7 +13,7 @@
   
   <script>
   import { useProductRecomendationStore } from '../../../stores/productRecomendation.js';
-  import RecommendedProductCard from 'D:/Programing/faithwork-web/src/views/Product/controllers/RecommendedProductCard.vue';
+  import RecommendedProductCard from './RecommendedProductCard.vue';
   
   export default {
     components: {
