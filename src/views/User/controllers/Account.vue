@@ -41,6 +41,7 @@ import AccountData from './AccountData.vue';
 import OrderHistory from './OrderHistory.vue';
 import Addresses from './Addresses.vue';
 
+
 const userStore = useUserStore();
 
 const isLoggedIn = computed(() => userStore.isLoggedIn);

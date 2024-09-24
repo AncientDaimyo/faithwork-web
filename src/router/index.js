@@ -76,6 +76,7 @@ const routes = [
     name: 'login',
     component: Login
   },
+
   {
     path: '/cart',
     name: 'cart',

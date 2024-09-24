@@ -2,7 +2,13 @@
   <HeaderRide />
   <div class="single-product-page-wrapper">
     <div class="image-wrapper">
-      <img src="D:\Programing\faithwork-web\src\views\Shared\pic\FW_GIRLS_LOGO_black.png" alt="" class="single-product-image" />
+       <img
+          class="single-product-image"
+          :src="product.image"
+          :alt="name"
+          v-for="(img, index) in 3"
+          :key="index"
+        />
     </div>
     <div class="info">
       <p class="single-product-name">{{ product.name }}</p>
