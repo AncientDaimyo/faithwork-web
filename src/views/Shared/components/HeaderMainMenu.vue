@@ -34,29 +34,26 @@
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            showDropdown: false,
-            timer: null,
-        }
-    },
-    methods: {
-        handleMouseLeave() {
-            clearTimeout(this.timer);
-            this.timer = setTimeout(() => {
-                this.showDropdown = false;
-            }, 450);
-        },
-        handleLinkMouseOver() {
-            clearTimeout(this.timer);
-        },
-        handleLinkMouseLeave() {
-            this.timer = setTimeout(() => {
-                this.showDropdown = false;
-            }, 450);
-        },
-    }
-}
+<script setup>
+import { ref } from 'vue';
+
+const showDropdown = ref(false);
+const timer = ref(null);
+
+const handleMouseLeave = () => {
+    clearTimeout(timer.value);
+    timer.value = setTimeout(() => {
+        showDropdown.value = false;
+    }, 450);
+};
+
+const handleLinkMouseOver = () => {
+    clearTimeout(timer.value);
+};
+
+const handleLinkMouseLeave = () => {
+    timer.value = setTimeout(() => {
+        showDropdown.value = false;
+    }, 450);
+};
 </script>

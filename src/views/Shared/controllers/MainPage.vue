@@ -1,25 +1,39 @@
 <template>
     <HeaderMain />
     <VideoMain />
+    <ProductRecomendations />
     <SliderMain />
-    <MarqueeMain />
     <FooterMain />
-</template>
-
-<script>
-import HeaderMain from './HeaderMain.vue'
-import VideoMain from './VideoMain.vue'
-import SliderMain from './SliderMain.vue'
-import MarqueeMain from './MarqueeMain.vue'
-import FooterMain from './FooterMain.vue'
-
-export default {
+  </template>
+  
+  <script>
+  import HeaderMain from './HeaderMain.vue';
+  import VideoMain from './VideoMain.vue';
+  import ProductRecomendations from '../../Product/controllers/ProductRecommendations.vue';
+  import SliderMain from './SliderMain.vue';
+  import MarqueeMain from './MarqueeMain.vue';
+  import FooterMain from './FooterMain.vue';
+  import { useProductRecomendationStore } from '../../../stores/productRecomendation.js';
+  import { onMounted } from 'vue';
+  
+  export default {
     components: {
-        HeaderMain,
-        VideoMain,
-        SliderMain,
-        MarqueeMain,
-        FooterMain
+      HeaderMain,
+      VideoMain,
+      ProductRecomendations,
+      SliderMain,
+      MarqueeMain,
+      FooterMain
     },
-}
-</script>
+    setup() {
+      const productRecomendationStore = useProductRecomendationStore();
+  
+      // Загружаем рекомендуемые продукты при монтировании компонента
+      onMounted(() => {
+        productRecomendationStore.fetchRecommendedProducts();
+      });
+  
+      return {};
+    }
+  }
+  </script>

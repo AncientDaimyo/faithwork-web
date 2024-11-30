@@ -1,10 +1,59 @@
 <template>
-  <HeaderRide />
-  
-  <div class="shop-page" >
-    <ProductCard v-for="product in products" :key="product" :product="product" />
+  <div class="page-wrapper">
+    <HeaderRide />
+    <div class="shop-page">
+      <div class="product-card-wrapper" v-for="product in products" :key="product.uuid">
+        <a :href="`/product/${product.uuid}`" class="product-card-link">
+          <img class="product-card-image" src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
+          alt="Product Image">
+          <div class="product-card-content">
+            <div class="product-card-name">{{ product.name }}</div>
+            <div class="product-card-cost">{{ product.price }} руб.</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <FooterSecond />
   </div>
-  <FooterSecond />
+</template>
+
+<script>
+import HeaderRide from "../../Shared/controllers/HeaderRide.vue";
+import FooterSecond from "../../Shared/controllers/FooterSecond.vue";
+import axios from "axios";
+
+export default {
+  components: {
+    HeaderRide,
+    FooterSecond,
+  },
+  data() {
+    return {
+      products: [],
+    };
+  },
+  created() {
+    axios.get("https://127.0.0.1:8000/api/product/get-products")
+      .then((response) => {
+        this.products = response.data;
+      })
+      .catch((error) => {
+        console.error("Ошибка при загрузке продуктов:", error);
+      });
+  }
+};
+</script>
+
+
+
+<!-- <template>
+  <div class="page-wrapper">
+    <HeaderRide />
+    <div class="shop-page">
+      <ProductCard v-for="product in products" :key="product.uuid" :product="product" />
+    </div>
+    <FooterSecond />
+  </div>
 </template>
 
 <script>
@@ -21,15 +70,17 @@ export default {
   },
   data() {
     return {
-      products: {},
+      products: [],
     };
   },
   created() {
     axios.get("https://127.0.0.1:8000/api/product/get-products")
       .then((response) => {
-        // data is already parsed as JSON
         this.products = response.data;
+      })
+      .catch((error) => {
+        console.error("Ошибка при загрузке продуктов:", error);
       });
   }
 };
-</script>
+</script> -->

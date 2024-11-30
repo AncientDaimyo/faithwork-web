@@ -3,7 +3,7 @@
         <div class="product-card" @mouseenter="showImage = true" @mouseleave="showImage = false">
             <a :href="route + product.uuid" class="product-card-link">
                 <div class="product-card-image-wrapper">
-                    <img class="product-card-image" alt="Product Image">
+                    <img class="product-card-image" src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png" alt="Product Image">
                 </div>
             </a>
             <div class="product-card-details">
