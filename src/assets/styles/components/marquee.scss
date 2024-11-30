@@ -2,20 +2,23 @@
     overflow: hidden;
     position: relative;
     height: auto;
-    
+
     .marquee-wrapper {
         display: flex;
         background-color: #d0e3ff;
-        height: 66px;
+        height: var(--spacing-4xl);
+        /* 66px округлено до 80px (5rem) */
         align-items: center;
         justify-content: center;
 
         .marquee-content {
             color: white;
-            font-size: 33px;
+            font-size: var(--spacing-lg);
+            /* 33px округлено до 32px (2rem) */
             white-space: nowrap;
             flex-shrink: 0;
-            padding: 0 var(--menu-probely);
+            padding: 0 var(--spacing-md);
+            /* Использована переменная для отступов */
             animation: marquee 5s linear infinite;
         }
     }
@@ -23,10 +26,10 @@
 
 @keyframes marquee {
     0% {
-        transform: translateZ(0);
+        transform: translateX(0);
     }
 
     to {
-        transform: translate3d(-100%, 0, 0);
+        transform: translateX(-100%);
     }
 }

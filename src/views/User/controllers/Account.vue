@@ -25,7 +25,6 @@
             <component :is="currentComponent" @login-success="handleLoginSuccess"
                 @register-success="handleRegisterSuccess" @show-register="showRegister" @show-login="showLogin" />
         </div>
-
         <FooterSecond />
     </div>
 </template>

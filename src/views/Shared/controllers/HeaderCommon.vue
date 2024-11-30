@@ -4,26 +4,18 @@
             <HeaderMainMenu />
         </div>
         <div class="mobile">
-            <!-- <?php Templator::get_template_part_component('main_header_mobile_menu'); ?> -->
+            <BurgerMenu />
         </div>
         <HeaderLogo />
-        <HeaderIcons />
+        <div class="navigation-icons">
+            <HeaderIcons />
+        </div>
     </header>
 </template>
 
-<script>
-
+<script setup>
 import HeaderMainMenu from '../components/HeaderMainMenu.vue';
 import HeaderLogo from '../components/HeaderLogo.vue';
 import HeaderIcons from '../components/HeaderIcons.vue';
-
-
-export default {
-    components: {
-        HeaderMainMenu,
-        HeaderLogo,
-        HeaderIcons,
-    }
-}
-
+import BurgerMenu from '../components/BurgerMenu.vue';  
 </script>

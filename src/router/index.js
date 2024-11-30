@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import MainPage from '../views/Shared/controllers/MainPage.vue'
 import AboutUs from '../views/Content/controllers/AboutUs.vue'
 import ContactUs from '../views/Content/controllers/ContactUs.vue'
@@ -14,6 +13,7 @@ import Register from '../views/User/controllers/Register.vue';
 import Login from '../views/User/controllers/Login.vue';
 import Cart from '../views/Checkout/controllers/Cart.vue'
 import Gambling from '../views/User/controllers/Gambling.vue'
+import TestImage from '../views/Product/controllers/TestImage.vue'
 
 const routes = [
   {
@@ -86,6 +86,11 @@ const routes = [
     path: '/gambling',
     name: 'gambling',
     component: Gambling
+  },
+  {
+    path: '/test_image',
+    name: 'test_image',
+    component: TestImage
   },
 ]
 

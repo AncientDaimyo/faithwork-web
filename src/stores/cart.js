@@ -13,6 +13,14 @@ export const useCartStore = defineStore("cartStore", {
         return total + item.product.cost * item.quantity;
       }, 0);
     },
+    // Добавляем геттер для проверки наличия товара с выбранным размером
+    hasItemWithSize(state) {
+      return (productUuid, size) => {
+        return state.cartItems.some(
+          (item) => item.product.uuid === productUuid && item.size === size
+        );
+      };
+    },
   },
   actions: {
     // Добавление товара в корзину

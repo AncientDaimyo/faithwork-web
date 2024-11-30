@@ -4,12 +4,10 @@
     width: 100%;
     height: var(--logo-width);
     z-index: 100;
-    font-size: 14px ;
+    font-size: 14px;
     font-weight: 600;
-    & {
-        background-color: black;
-        transition: 0.3s;
-    }
+    background-color: black;
+    transition: 0.3s;
 
     .custom-logo-link {
         display: inline-block;
@@ -23,8 +21,27 @@
             top: 0;
             z-index: 100;
         }
+
         .faithwork-logo.inactive {
             display: none;
+        }
+    }
+
+    .desktop {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+        .desktop {
+            display: none;
+        }
+
+        .mobile {
+            display: block;
         }
     }
 }

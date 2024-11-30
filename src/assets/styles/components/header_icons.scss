@@ -8,6 +8,7 @@
     justify-content: flex-end;
     align-items: center;
     z-index: 100;
+
     &.active {
         left: 20vw;
         justify-content: space-between;
@@ -19,12 +20,29 @@
 
         .header-svg {
             transform: scale(0.75, 0.75);
+
             &.black {
                 filter: invert(100%);
             }
+
             &:hover {
                 filter: invert(50%);
             }
         }
+    }
+
+    @media (max-width: 320px) {
+        right: var(--menu-spacing);
+        justify-content: flex-end;
+    }
+
+    @media (min-width: 321px) and (max-width: 375px) {
+        right: var(--menu-spacing);
+        justify-content: flex-end;
+    }
+
+    @media (min-width: 376px) and (max-width: 425px) {
+        right: var(--menu-spacing);
+        justify-content: flex-end;
     }
 }

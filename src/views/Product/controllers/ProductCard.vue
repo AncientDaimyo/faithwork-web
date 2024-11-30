@@ -1,44 +1,49 @@
 <template>
-    <div class="product-card-full">
-        <div class="product-card-wrapper" @mouseenter="showImage = true" @mouseleave="showImage = false">
-            <a v-bind:href="route + product.uuid"></a>
-            <div class="image-wrapper">
-                <img class="product-card-image" :src="product.image">
-            </div>
-            <div class="product-card-name">{{ product.name }}</div>
-            <div class="product-card-cost">{{ product.cost.split('.')[0] }}</div>
-        </div>
-    </div>
+    <figure class="product-card-wrapper" @mouseenter="showImage = true" @mouseleave="showImage = false">
+        <a :href="route + props.product.uuid"></a>
+        <!-- 
+        <img class="product-card-image" :src="imageSrc" :alt="props.product.name" 
+        -->
+        <img class="product-card-image" src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
+            alt="Product Image">
+        <p class="product-card-name">{{ props.product.name }}</p>
+        <p class="product-card-cost">{{ props.product.cost.split('.')[0] }} ₽</p>
+    </figure>
 </template>
 
 <script setup>
-defineProps({
-    'product': Object,
-});
-</script>
+import { ref, computed, onMounted } from 'vue';
 
-<script>
-export default {
-    data() {
-        return {
-            name: '',
-            cost: '',
-            image: '',
-            route: '/shop/'
-        }
-    },
-    created() {
-        if (typeof product === "undefined") {
-            this.name = '';
-            this.cost = '';
-            this.image = '';
-        }
-        else {
-            this.name = this.product.name;
-            this.cost = this.product.cost;
-            this.image = this.product.image;
-        }
+const route = '/shop/';
 
+const props = defineProps({
+    product: {
+        type: Object,
+        required: true
     }
-}
+});
+
+const showImage = ref(false);
+
+const imageSrc = computed(() => {
+    return showImage.value ? props.product.hover_image : props.product.image;
+});
+
+const productName = ref(null);
+const truncatedProductName = ref('');
+
+const truncateText = () => {
+    if (productName.value) {
+        const originalText = props.product.name;
+        if (originalText.length > 25) {
+            truncatedProductName.value = originalText.slice(0, 25) + '...';
+        } else {
+            truncatedProductName.value = originalText;
+        }
+    }
+};
+
+onMounted(() => {
+    truncateText();
+});
 </script>
