@@ -5,7 +5,7 @@ import "./assets/styles/app.scss";
 import App from "./App.vue";
 import router from "./router";
 
-const pinia = createPinia()
+const pinia = createPinia();
 
 createApp(App)
     .use(pinia)
