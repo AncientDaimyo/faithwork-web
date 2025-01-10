@@ -1,43 +1,49 @@
-.fw-button {
-    display: flex;
-    align-items: center;
-    /* Центрирование по вертикали */
-    justify-content: center;
-    /* Центрирование по горизонтали */
-    margin-bottom: 1rem;
-    padding: 1rem;
-    /* Отступы у текста */
-    font-size: 16px;
-    /* Размер текста */
-    min-width: 10rem;
-    /* Минимальная ширина кнопки */
-    max-width: 15rem;
-    /* Максимальная ширина кнопки */
-    background-color: #071013;
-    /* Цвет фона */
-    color: white;
-    /* Цвет текста */
+.fw-btn {
+    display: block;
+    padding: 0.75rem 1.5rem; // 12px 24px
+    margin: 0.25rem;
+    font-size: 1rem; // 16px
+    color: #fff;
+    background-color: #7371FC;
     border: none;
-    /* Убираем границу */
     border-radius: 1rem;
-    /* Скругление углов */
     cursor: pointer;
-    /* Курсор при наведении */
-    transition: background-color 0.1s ease;
-    /* Плавный переход цвета фона */
-
-    &:hover {
-        background-color: #484b54;
-        /* Цвет фона при наведении */
+    text-align: center;
+    text-decoration: none;
+    min-width: 10rem; // 160px
+    min-height: 3rem; // 48px
+    line-height: 1.5; // 24px
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    position: relative;
+  
+    &--primary {
+      &:hover {
+        background-color: #e0e0e0; // Светло-серый фон при наведении
+        color: #333;
+      }
     }
-
-    &:active {
-        background-color: #848999;
-        /* Цвет фона при нажатии */
+  
+    &--secondary {
+      background-color: #666; // Средне-серый фон
+  
+      &:hover {
+        background-color: #e0e0e0; // Светло-серый фон при наведении
+        color: #666;
+      }
     }
-
-    &:disabled {
-        background-color: #bbbec6;
-        cursor: default;
+  
+    &--tertiary {
+      background-color: #999; // Светло-серый фон
+  
+      &:hover {
+        background-color: #e0e0e0; // Светло-серый фон при наведении
+        color: #999;
+      }
     }
-}
+  
+    &--disabled {
+      background-color: #ccc; // Светло-серый фон для неактивных кнопок
+      color: #999; // Светло-серый текст для неактивных кнопок
+      cursor: not-allowed;
+    }
+  }
