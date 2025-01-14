@@ -16,21 +16,24 @@
             vitae vestibulum vestibulum. Cras venenatis euismod malesuada.</p>
 
 
-        <button class="fw-btn fw-btn--primary" @click="openModal">Open Modal</button>
+        <button class="fw-btn fw-btn--primary" @click="openModal">Открыть модалку</button>
         <div :class="['fw-modal', { 'fw-modal--visible': isVisible }]" @click.self="closeModal">
             <div class="fw-modal-content">
                 <div class="fw-modal-header">
                     <span class="fw-modal-close" @click="closeModal">&times;</span>
                 </div>
                 <div class="fw-modal-body">
-                    This is the modal content.
+                    <p class="fw-p">Модальное окно</p>
+                    <img class="fw-img fw-img--responsive" src="../pic/FW_GIRL_FACE_black.png" />
                 </div>
                 <div class="fw-modal-footer">
-                    <button class="fw-btn fw-btn--secondary" @click="closeModal">Close</button>
-                    <button class="fw-btn fw-btn--primary" @click="save">Save</button>
+                    <button class="fw-btn fw-btn--primary" @click="save">Закрыть</button>
                 </div>
             </div>
         </div>
+
+        <img class="fw-img fw-img--dynamic fw-img--responsive" src="../pic/FW_GIRL_FACE_black.png" />
+
     </div>
     < </template>
 
