@@ -1,8 +1,10 @@
 <template>
-    <HeaderCommon/>
-    <div class="info-content-page">
-        <div class="contact-us-heading">
-            <h1>Контакты</h1>
+    <div class="page-wrapper">
+        <HeaderCommon />
+        <div class="info-content-page">
+            <p class="contact-us-heading">
+                Контакты
+            </p>
             <div class="contact-us-article">
                 <p>
                     <strong>Email:</strong> <a href="mailto:clothing@faithwork.ru">clothing@faithwork.ru</a>
@@ -10,15 +12,13 @@
                 <p>
                     <strong>ИНН:</strong> 434547177915
                 </p>
-                <p>Скоро тут будет форма обратной связи, но мы её еще не сделали, поэтому пишите на Email, ответим в течение
-                    получаса на любой вопрос, даже как сделать сырники.</p>
+                <p>Скоро тут будет форма обратной связи, но мы её еще не сделали, поэтому пишите на Email, ответим в
+                    течение
+                    часа на любой вопрос, даже как сделать сырники.</p>
             </div>
         </div>
-        <div class="contact-us-picture">
-            <img src="../pic/FW_GIRL_FACE_black.png" />
-        </div>
+        <FooterSecond />
     </div>
-    <FooterSecond/>
 </template>
 
 <script>

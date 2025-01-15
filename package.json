@@ -13,6 +13,7 @@
     "@egjs/flicking-plugins": "^4.7.1",
     "@egjs/vue3-flicking": "^4.11.4",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
     "pinia": "^2.2.2",
     "posthog-js": "^1.165.0",
     "sass": "^1.78.0",

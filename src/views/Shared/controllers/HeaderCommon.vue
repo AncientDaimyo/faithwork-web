@@ -7,9 +7,7 @@
             <BurgerMenu />
         </div>
         <HeaderLogo />
-        <div class="navigation-icons">
-            <HeaderIcons />
-        </div>
+        <HeaderIcons />
     </header>
 </template>
 

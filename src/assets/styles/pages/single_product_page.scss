@@ -288,33 +288,21 @@
             background-color: #fff;
             padding: 10px;
             border-radius: 5px;
-            width: var(--spacing-xxl);
-            height: var(--spacing-xxl);
+            width: 30vw;
+            height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0px 0px 45px 15px rgba(34, 60, 80, 0.1);
+            box-sizing: border-box;
         }
 
         .modal-content img {
-            max-width: var(--spacing-xl);
-            max-height: var(--spacing-xl);
-            width: auto;
+            max-width: 100%;
             height: auto;
             object-fit: contain;
         }
 
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 80vw;
-                height: auto;
-            }
-
-            .modal-content img {
-                width: 100%;
-                height: auto;
-            }
-        }
     }
 }
 

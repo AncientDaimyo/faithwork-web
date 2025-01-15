@@ -14,6 +14,8 @@ import Login from '../views/User/controllers/Login.vue';
 import Cart from '../views/Checkout/controllers/Cart.vue'
 import Gambling from '../views/User/controllers/Gambling.vue'
 import TestImage from '../views/Product/controllers/TestImage.vue'
+import BaseElements from '../views/Shared/components/BaseElements.vue'
+import AtomTest from '../views/Content/controllers/AtomTest.vue'
 
 const routes = [
   {
@@ -91,6 +93,16 @@ const routes = [
     path: '/test_image',
     name: 'test_image',
     component: TestImage
+  },
+  {
+    path: '/base_elements',
+    name: 'base elements',
+    component: BaseElements
+  },
+  {
+    path: '/atom_test',
+    name: 'atom_test',
+    component: AtomTest
   },
 ]
 

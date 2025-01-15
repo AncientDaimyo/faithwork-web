@@ -1,57 +1,34 @@
 <template>
-  <!-- Обертка страницы -->
   <div class="page-wrapper">
-    <!-- Компонент HeaderCommon -->
     <HeaderCommon />
-
-    <!-- Обертка контента -->
-    <div class="content-wrapper">
-      <!-- Контейнер для корзины -->
+    
       <div class="cart-page">
-        <!-- Модальное окно авторизации -->
         <AuthModal :showModal="showModal" @close="closeModal" @continue-checkout="continueCheckout" />
 
-        <!-- Список товаров в корзине -->
+
         <div v-if="cartItems.length > 0" class="cart-items-container">
-          <!-- Вывод каждого товара в корзине -->
           <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
-            <!-- Обертка изображения товара -->
             <div class="cart-item-image-wrapper">
-              <!-- Изображение товара -->
               <img src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
                 :alt="item.product.name" class="cart-item-image" @click="goToProductPage(item.product.uuid)" />
             </div>
-
-            <!-- Информация о товаре -->
             <div class="cart-item-info">
-              <!-- Название товара -->
               <p class="cart-item-name" @click="goToProductPage(item.product.uuid)" :style="{ cursor: 'pointer' }">
                 {{ item.product.name }}
               </p>
-              <!-- Размер товара -->
               <p class="cart-item-size">Размер: {{ item.size }}</p>
-              <!-- Количество товара -->
               <div class="cart-item-quantity">
-                <!-- Кнопка уменьшения количества -->
                 <button @click="decreaseQuantity(item.product.uuid, item.size)">
                   -
                 </button>
-                <!-- Текущее количество -->
                 <span>{{ item.quantity }}</span>
-                <!-- Кнопка увеличения количества -->
                 <button @click="increaseQuantity(item.product.uuid, item.size)">
                   +
                 </button>
               </div>
-              <!-- Цена товара -->
               <p class="cart-item-price">
                 Цена: {{ item.product.cost }} ₽ (за единицу)
               </p>
-              <!-- Общая стоимость товара -->
-              <p class="cart-item-total">
-                Общая стоимость: {{ item.product.cost * item.quantity }} ₽
-              </p>
-              <!-- Кнопка удаления товара -->
               <button @click="removeItem(item.product.uuid, item.size)" class="remove-item">
                 Удалить
               </button>
@@ -59,24 +36,20 @@
           </div>
         </div>
 
-        <!-- Информация о корзине и действия -->
+
+
+        
         <div v-if="cartItems.length > 0" class="cart-total">
-          <!-- Общая стоимость корзины -->
           <div>
             <p>Итого: {{ cartTotalPrice }} ₽</p>
           </div>
-          <!-- Действия с корзиной -->
           <div class="actions">
-            <!-- Блок кнопки оформления заказа -->
             <div class="action_checkout_block">
-              <!-- Кнопка оформления заказа -->
               <button @click="checkout" class="checkout">
                 Оформить заказ
               </button>
             </div>
-            <!-- Блок кнопки очистки корзины -->
             <div class="action_clear_cart_block">
-              <!-- Кнопка очистки корзины -->
               <button @click="clearCart" class="clear-cart">
                 Очистить корзину
               </button>
@@ -84,14 +57,12 @@
           </div>
         </div>
 
-        <!-- Сообщение для пустой корзины -->
+
         <div v-else class="empty-cart-message">
-          <p>Тут пусто, добавьте товар и случится чудо :)</p>
+          Тут пусто, добавьте товар и случится чудо :)
         </div>
       </div>
-    </div>
 
-    <!-- Компонент FooterSecond -->
     <FooterSecond />
   </div>
 </template>
