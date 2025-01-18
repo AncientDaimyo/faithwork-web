@@ -3,12 +3,12 @@
     <HeaderRide />
     <div class="shop-page">
       <div class="product-card-wrapper" v-for="product in products" :key="product.uuid">
-        <a :href="`/product/${product.uuid}`" class="product-card-link">
+        <a :href="`/shop/${product.uuid}`" class="product-card-link">
           <img class="product-card-image" src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
           alt="Product Image">
           <div class="product-card-content">
             <div class="product-card-name">{{ product.name }}</div>
-            <div class="product-card-cost">{{ product.price }} руб.</div>
+            <div class="product-card-cost">{{ product.cost }} ₽</div>
           </div>
         </a>
       </div>
@@ -30,10 +30,13 @@ export default {
   data() {
     return {
       products: [],
+      apiHost: import.meta.env.VITE_API_HOST,
+      apiRoute: '/api/product/get-products',
     };
   },
   created() {
-    axios.get("https://127.0.0.1:8000/api/product/get-products")
+    console.log(this.apiUrl);
+    axios.get(`${this.apiHost}${this.apiRoute}`)
       .then((response) => {
         this.products = response.data;
       })

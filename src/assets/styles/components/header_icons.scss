@@ -30,19 +30,4 @@
             }
         }
     }
-
-    @media (max-width: 320px) {
-        right: var(--menu-spacing);
-        justify-content: flex-end;
-    }
-
-    @media (min-width: 321px) and (max-width: 375px) {
-        right: var(--menu-spacing);
-        justify-content: flex-end;
-    }
-
-    @media (min-width: 376px) and (max-width: 425px) {
-        right: var(--menu-spacing);
-        justify-content: flex-end;
-    }
 }

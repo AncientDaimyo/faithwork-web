@@ -1,19 +1,23 @@
 <template>
-    <HeaderCommon/>
-    <div class="info-content-page">
-        <div class="size-guide-heading">
-            <h1>Размерная сетка</h1>
+    <div class="page-wrapper">
+        <HeaderCommon />
+        <div class="info-content-page">
+            <p class="size-guide-heading">
+                Размерная сеткa
+            </p>
             <div class="size-guide-article">
-                <p>
-                    Мы сделали для вас отдельную страницу для выбора размерной сетки всех типов наших товаров
-                </p>
+                Мы сделали для вас отдельную страницу для выбора размерной сетки всех типов наших товаров
+            </div>
+            <div class="size-guide-border-block">
+                <p class="size-guide-border"></p>
+            </div>
+            <div class="size-guide-picture">
+                <p>Tee</p>
+                <img src="../pic/FW_GIRL_FACE_black.png" />
             </div>
         </div>
-        <div class="size-guide-picture">
-            <img src="../pic/FW_GIRL_FACE_black.png" />
-        </div>
+        <FooterSecond />
     </div>
-    <FooterSecond/>
 </template>
 
 <script>
