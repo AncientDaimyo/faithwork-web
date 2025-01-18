@@ -27,9 +27,8 @@
     </div>
     <div class="account-data-buttons">
       <button class="save-button" @click="saveChanges">СОХРАНИТЬ</button>
-      <button class="logout-button" @click="logout">ВЫЙТИ ИЗ АККАУНТА</button>
+      <button class="logout-button" @click="showLogoutConfirmation">ВЫЙТИ ИЗ АККАУНТА</button>
     </div>
-
 
     <!-- Блок для отображения сохраненных данных -->
     <div v-if="savedData" class="saved-data">
@@ -40,6 +39,15 @@
       <p><strong>E-mail:</strong> {{ savedData.email }}</p>
       <p><strong>Номер телефона:</strong> {{ savedData.phone }}</p>
       <p><strong>Подписан на рассылку:</strong> {{ savedData.newsletter ? 'Да' : 'Нет' }}</p>
+    </div>
+
+    <!-- Модальное окно для подтверждения выхода -->
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <p>Вы уверены, что хотите выйти из аккаунта?</p>
+        <button @click="confirmLogout">Да</button>
+        <button @click="cancelLogout">Нет</button>
+      </div>
     </div>
   </div>
 </template>
@@ -59,6 +67,7 @@ const userData = computed({
 });
 
 const savedData = ref(null);
+const showModal = ref(false);
 
 const saveChanges = () => {
   // Логика сохранения изменений в хранилище Pinia
@@ -67,10 +76,19 @@ const saveChanges = () => {
   savedData.value = { ...userData.value };
 };
 
-const logout = () => {
+const showLogoutConfirmation = () => {
+  showModal.value = true;
+};
+
+const confirmLogout = () => {
   userStore.clearUserData();
   // Перенаправляем пользователя на страницу входа
   // Здесь можно добавить логику для перенаправления на страницу входа
+  showModal.value = false;
+};
+
+const cancelLogout = () => {
+  showModal.value = false;
 };
 </script>
 
@@ -113,5 +131,30 @@ const logout = () => {
 
 .logout-button:hover {
   background-color: #c82333;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-content button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 </style>

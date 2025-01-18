@@ -2,16 +2,16 @@
     width: 100vw;
     height: auto;
     margin: 0;
-    max-height: var(--spacing-12xl);
+    max-height: var(--spacing-32xl);
     /* Заменено 960px на 320px (20rem) */
 
     .swiper-wrapper {
-        max-height: var(--spacing-12xl);
+        max-height: var(--spacing-32xl);
         margin-top: -var(--spacing-xs);
         /* -4px заменено на -0.25rem */
 
         .swiper-slide {
-            max-height: var(--spacing-12xl);
+            max-height: var(--spacing-32xl);
             position: relative;
             display: flex;
             align-items: center;
@@ -32,7 +32,7 @@
             img {
                 width: 100%;
                 height: auto;
-                max-height: var(--spacing-12xl);
+                max-height: var(--spacing-30xl);
                 object-fit: cover;
                 filter: blur(var(--spacing-sm));
                 /* 5px заменено на 8px (0.5rem) */
