@@ -4,7 +4,7 @@
     <div class="shop-page">
       <div class="product-card-wrapper" v-for="product in products" :key="product.uuid">
         <a :href="`/shop/${product.uuid}`" class="product-card-link">
-          <img class="product-card-image" src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
+          <img class="product-card-image" src="/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
           alt="Product Image">
           <div class="product-card-content">
             <div class="product-card-name">{{ product.name }}</div>

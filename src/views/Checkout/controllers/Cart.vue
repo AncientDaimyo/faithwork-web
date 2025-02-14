@@ -9,7 +9,7 @@
         <div v-if="cartItems.length > 0" class="cart-items-container">
           <div v-for="(item, index) in cartItems" :key="index" class="cart-item">
             <div class="cart-item-image-wrapper">
-              <img src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
+              <img src="/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
                 :alt="item.product.name" class="cart-item-image" @click="goToProductPage(item.product.uuid)" />
             </div>
             <div class="cart-item-info">
