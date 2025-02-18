@@ -4,7 +4,7 @@
         <!-- 
         <img class="product-card-image" :src="imageSrc" :alt="props.product.name" 
         -->
-        <img class="product-card-image" src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
+        <img class="product-card-image" src="/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png"
             alt="Product Image">
         <p class="product-card-name">{{ props.product.name }}</p>
         <p class="product-card-cost">{{ props.product.cost.split('.')[0] }} ₽</p>

@@ -2,7 +2,7 @@
     <div class="image_test_page">
         <figure class="test_image_column">
             <a src="/shop" class="test_link"></a>
-            <img class="test-card-image" src="D:/Programing/faithwork-web/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png" alt="Product Image">
+            <img class="test-card-image" src="/src/views/Shared/pic/FW_GIRL_FACE_black_2x3.png" alt="Product Image">
             <p class="test-card-name">name</p>
             <p class="test-card-cost">123123</p>
         </figure>
